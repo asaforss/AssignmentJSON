@@ -43,12 +43,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbnTemporary = new System.Windows.Forms.RadioButton();
+            this.rbnExternal = new System.Windows.Forms.RadioButton();
+            this.rbnNormal = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxPostalCode = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numDaysInAdvance)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -163,20 +164,16 @@
             // 
             // numDaysInAdvance
             // 
-            this.numDaysInAdvance.Location = new System.Drawing.Point(115, 120);
+            this.numDaysInAdvance.Location = new System.Drawing.Point(497, 126);
             this.numDaysInAdvance.Name = "numDaysInAdvance";
             this.numDaysInAdvance.Size = new System.Drawing.Size(45, 20);
             this.numDaysInAdvance.TabIndex = 12;
-            this.numDaysInAdvance.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.numDaysInAdvance.ValueChanged += new System.EventHandler(this.NumDaysInAdvance_ValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 120);
+            this.label3.Location = new System.Drawing.Point(401, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 13;
@@ -193,58 +190,61 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rbnTemporary);
+            this.groupBox1.Controls.Add(this.rbnExternal);
+            this.groupBox1.Controls.Add(this.rbnNormal);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(201, 98);
+            this.groupBox1.Location = new System.Drawing.Point(12, 99);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(365, 55);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
-            // radioButton3
+            // rbnTemporary
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(244, 27);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(75, 17);
-            this.radioButton3.TabIndex = 18;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Temporary\r\n";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbnTemporary.AutoSize = true;
+            this.rbnTemporary.Location = new System.Drawing.Point(244, 27);
+            this.rbnTemporary.Name = "rbnTemporary";
+            this.rbnTemporary.Size = new System.Drawing.Size(75, 17);
+            this.rbnTemporary.TabIndex = 18;
+            this.rbnTemporary.Text = "Temporary\r\n";
+            this.rbnTemporary.UseVisualStyleBackColor = true;
+            this.rbnTemporary.CheckedChanged += new System.EventHandler(this.RbnTemporary_CheckedChanged);
             // 
-            // radioButton2
+            // rbnExternal
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(175, 27);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(63, 17);
-            this.radioButton2.TabIndex = 17;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "External";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbnExternal.AutoSize = true;
+            this.rbnExternal.Location = new System.Drawing.Point(175, 27);
+            this.rbnExternal.Name = "rbnExternal";
+            this.rbnExternal.Size = new System.Drawing.Size(63, 17);
+            this.rbnExternal.TabIndex = 17;
+            this.rbnExternal.TabStop = true;
+            this.rbnExternal.Text = "External";
+            this.rbnExternal.UseVisualStyleBackColor = true;
+            this.rbnExternal.CheckedChanged += new System.EventHandler(this.RbnExternal_CheckedChanged);
             // 
-            // radioButton1
+            // rbnNormal
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(111, 27);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 17);
-            this.radioButton1.TabIndex = 16;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Normal";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbnNormal.AutoSize = true;
+            this.rbnNormal.Checked = true;
+            this.rbnNormal.Location = new System.Drawing.Point(111, 27);
+            this.rbnNormal.Name = "rbnNormal";
+            this.rbnNormal.Size = new System.Drawing.Size(58, 17);
+            this.rbnNormal.TabIndex = 16;
+            this.rbnNormal.TabStop = true;
+            this.rbnNormal.Text = "Normal";
+            this.rbnNormal.UseVisualStyleBackColor = true;
+            this.rbnNormal.CheckedChanged += new System.EventHandler(this.RbnNormal_CheckedChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBox2.Controls.Add(this.tbxName);
             this.groupBox2.Controls.Add(this.groupBox1);
-            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.numDaysInAdvance);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cbxMonday);
             this.groupBox2.Controls.Add(this.cbxTuesday);
             this.groupBox2.Controls.Add(this.cbxSunday);
@@ -259,10 +259,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Product";
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.Location = new System.Drawing.Point(370, 31);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(0, 13);
+            this.lblErrorMessage.TabIndex = 17;
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.tbxPostalCode);
             this.groupBox3.Location = new System.Drawing.Point(39, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(200, 47);
@@ -270,18 +278,19 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Postal code";
             // 
-            // textBox1
+            // tbxPostalCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(91, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(89, 20);
-            this.textBox1.TabIndex = 0;
+            this.tbxPostalCode.Location = new System.Drawing.Point(91, 19);
+            this.tbxPostalCode.Name = "tbxPostalCode";
+            this.tbxPostalCode.Size = new System.Drawing.Size(89, 20);
+            this.tbxPostalCode.TabIndex = 0;
             // 
             // IndataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 326);
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnStart);
@@ -295,6 +304,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -315,12 +325,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rbnTemporary;
+        private System.Windows.Forms.RadioButton rbnExternal;
+        private System.Windows.Forms.RadioButton rbnNormal;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxPostalCode;
+        private System.Windows.Forms.Label lblErrorMessage;
     }
 }
 

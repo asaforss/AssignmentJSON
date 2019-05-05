@@ -6,26 +6,35 @@ using System.Threading.Tasks;
 
 namespace Assignement
 {
-    class Productlist
+    public class Productlist
     {
-        public static int productId;
+        // Statisk räknare som håller reda på hur många 
+        // produkter som har skapats
+        public static int productCounter;
 
-        public string Name { get; set; }
+        // Properties
+        public int Id { get;}
+       
+        public string Name { get; }
 
-        public int DaysInAdvance { get; set; }
+        public int DaysInAdvance { get; }
 
-        public ProductType Type { get; set; }
+        public ProductType Type { get; }
 
-        
+        //public bool IsGreenDelivery { get; }
+
+
         public List<DayOfWeek> DeliveryDays { get; set; }
 
+        //Constructor
         public Productlist(string name, int daysInAdvance, ProductType type, List<DayOfWeek> deliveryDays)
         {
             Name = name;
             DaysInAdvance = daysInAdvance;
             Type = type;
             DeliveryDays = deliveryDays;
-            productId++;
+            Id = productCounter;
+            productCounter++;
         }
 
     }
