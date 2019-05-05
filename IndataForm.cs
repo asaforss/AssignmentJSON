@@ -25,14 +25,9 @@ namespace Assignement
         {
 
             string postalCode = tbxPostalCode.Text;
-
-            Match result = Regex.Match(postalCode, @"([0-9]{5})");
-            if (!result.Success)
-            {
-                lblErrorMessage.BackColor = Color.PaleGoldenrod;
-                lblErrorMessage.Text = "You have to give a proper postal code: 5 digits";
+            if (!CheckPostalCode(postalCode))
                 return;
-            }
+
             Productlist product = makeProduct();
             if (product != null && postalCode != "")
             {
@@ -41,7 +36,7 @@ namespace Assignement
                 OutputForm outForm = new OutputForm();
                 outForm.Show();
 
-                StringBuilder sb = new StringBuilder($"Id: {product.Id} Name: {product.Name} JSON: \n", 300);
+                StringBuilder sb = new StringBuilder($"Id: {product.Id} Name: {product.Name} JSON: \n", 100);
 
                 List<DeliveryDate> availableDates = methods.ToDeliveryDateList(postalCode, product);
 
@@ -49,7 +44,7 @@ namespace Assignement
                 {
 
                     sb.Append("{\n\"status\":success,\n \"data\":{\n deliveryDates");
-                   
+
                     sb.Append(methods.ToJson(availableDates) + "\n");
                     sb.Append("}\n}");
                     outForm.rtbxOutput.Text = sb.ToString();
@@ -58,6 +53,19 @@ namespace Assignement
                     outForm.rtbxOutput.Text = "No avalible dates";
                 //}
             }
+        }
+        private bool CheckPostalCode(string postalCode)
+        {
+
+            Match result = Regex.Match(postalCode, @"([0-9]{5})");
+            if (!result.Success)
+            {
+                lblErrorMessage.BackColor = Color.PaleGoldenrod;
+                lblErrorMessage.Text = "You have to give a proper postal code: 5 digits";
+
+            }
+            return result.Success;
+
         }
 
         private Productlist makeProduct()
