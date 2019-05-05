@@ -21,6 +21,7 @@ namespace Assignement
         {
             List<DeliveryDate> tempDeliveryDates = new List<DeliveryDate>();
             List<DeliveryDate> deliveryDates = new List<DeliveryDate>();
+
             DateTime thisDate = DateTime.Now.Date;
             //The number of the current day of the week
             int thisDayOfWeek = (int)thisDate.DayOfWeek;
@@ -31,6 +32,7 @@ namespace Assignement
             DateTime upcomingDate;
             int numberOfUpcomingDays;
             int daysInAdvance = product.DaysInAdvance;
+
             //All external products need to be ordered 5 days in advance
             if (product.Type == ProductType.External)
             {

@@ -25,11 +25,12 @@ namespace Assignement
         {
 
             string postalCode = tbxPostalCode.Text;
-            if (!CheckPostalCode(postalCode))
+            bool postalCodeIsCorrect = CheckPostalCode(postalCode);
+            if(!postalCodeIsCorrect)
                 return;
 
             Productlist product = makeProduct();
-            if (product != null && postalCode != "")
+            if (product != null)
             {
                 //this.Hide();
                 Methods methods = new Methods();
