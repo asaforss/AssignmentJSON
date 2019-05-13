@@ -27,6 +27,7 @@ namespace Assignement
             if (product != null)
             {
                 Methods methods = new Methods();
+                //JsonMethods jsonMethods=new JsonMethods();
                 
                 OutputForm outForm = new OutputForm();
                 outForm.Show();
