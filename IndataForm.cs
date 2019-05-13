@@ -26,8 +26,8 @@ namespace Assignement
             Productlist product = makeProduct();
             if (product != null)
             {
-                //this.Hide();
                 Methods methods = new Methods();
+                
                 OutputForm outForm = new OutputForm();
                 outForm.Show();
 
