@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Assignement
+namespace Assignment
 {
     public class Productlist
     {

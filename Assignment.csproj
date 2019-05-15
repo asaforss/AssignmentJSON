@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="DeliveryDate.cs" />
     <Compile Include="Enum.cs" />
+    <Compile Include="JsonMethods.cs" />
     <Compile Include="Methods.cs" />
     <Compile Include="OutputForm.cs">
       <SubType>Form</SubType>

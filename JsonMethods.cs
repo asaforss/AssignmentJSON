@@ -1,17 +1,19 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
 using System.IO;
 using System.Runtime.Serialization.Json;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Assignement
+namespace Assignment
 {
-    public class JsonMethods
+    class JsonMethods
     {
-      
         // JSON 
         //http://csharphelper.com/blog/2018/01/use-json-to-serialize-and-deserialize-objects-in-c/
         public string ToJson(List<DeliveryDate> deliveryDates)
@@ -38,9 +40,5 @@ namespace Assignement
             json = JToken.Parse(json).ToString(Formatting.Indented);
             return json;
         }
-
     }
-    
-    }
-
-
+}

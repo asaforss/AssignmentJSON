@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Assignement
+namespace Assignment
 {
     public partial class OutputForm : Form
     {

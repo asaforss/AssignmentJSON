@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignement
+namespace Assignment
 {
     public enum ProductType { Normal, External, Temporary }
 }

@@ -1,4 +1,4 @@
-﻿namespace Assignement
+﻿namespace Assignment
 {
     partial class OutputForm
     {

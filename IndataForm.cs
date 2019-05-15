@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
-namespace Assignement
+namespace Assignment
 {
     public partial class IndataForm : Form
     {
@@ -27,7 +27,7 @@ namespace Assignement
             if (product != null)
             {
                 Methods methods = new Methods();
-                //JsonMethods jsonMethods=new JsonMethods();
+                JsonMethods jsonMethods=new JsonMethods();
                 
                 OutputForm outForm = new OutputForm();
                 outForm.Show();
@@ -41,7 +41,7 @@ namespace Assignement
 
                     sb.Append("{\n\"status\":success,\n \"data\":{\n deliveryDates");
 
-                    sb.Append(methods.ToJson(availableDates) + "\n");
+                    sb.Append(jsonMethods.ToJson(availableDates) + "\n");
                     sb.Append("}\n}");
                     outForm.rtbxOutput.Text = sb.ToString();
                 }
